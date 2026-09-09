@@ -36,18 +36,19 @@ app.get('/apiserversip', (req, res) => {
   res.send(JSON.stringify([
     {
       //ipServer: "192.168.56.1",
-      ipServer: "127.0.0.3",
-      countRoomServers: 3
-    },
-    {
-      //ipServer: "192.168.100.2",
-      ipServer: "127.0.0.2",
-      countRoomServers: 3
-    },
-    {
-      ipServer: "127.0.0.1",
-      countRoomServers: 3
-    }
+      //ipServer: "127.0.0.3",
+      ipServer: "168.222.142.14",
+      countRoomServers: 4
+    }//,
+    //{
+    //   //ipServer: "192.168.100.2",
+    //   ipServer: "127.0.0.2",
+    //   countRoomServers: 3
+    // },
+    // {
+    //   ipServer: "127.0.0.1",
+    //   countRoomServers: 3
+    // }
   ]))
 })
 //==========================================
