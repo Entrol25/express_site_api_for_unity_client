@@ -1,0 +1,42 @@
+
+NPM / NVM //=================================================
+
+W10
+https://www.youtube.com/watch?v=gm7XAbcUn5Y
+
+Гуглим и скачиваем
+1) https://github.com/coreybutler/nvm-windows
+2) https://github.com/coreybutler/nvm-windows/releases
+3) nvm-setup.exe
+
+
+
+node -v
+nvm install 18.18.0// скачать конкретную версию
+nvm install 18.19.1
+nvm install 18.20.0 //<=======
+nvm install 20.11.1
+nvm use 18.18.0// использовать данную версию
+nvm use 18.19.1
+nvm use 18.20.0 //<=======
+nvm use 20.11.1
+
+nvm use 24.20.0
+nvm use 24.14.1
+
+
+nvm list// список версий
+C:\Program Files\nodejs// удалить если есть ошибки
+nvm uninstall 18.18.0// удалить конкретную версию
+EXPRESS //===========================================================
+
+
+
+npm init -y // npm init -y // package.json
+nvm install express
+npm install -D @types/express // types для разработки
+npm install -D nodemon // для разработки
+
+//node index // запуск
+npm run dev // запуск c nodemon
+//npm run start // запуск 
