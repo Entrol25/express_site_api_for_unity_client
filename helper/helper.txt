@@ -40,3 +40,4 @@ npm install -D nodemon // для разработки
 //node index // запуск
 npm run dev // запуск c nodemon
 //npm run start // запуск 
+//npm run startholdcrowd // запуск 
