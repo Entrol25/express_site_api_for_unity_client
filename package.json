@@ -10,8 +10,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node holdcrowd.js",
+    "dev": "nodemon holdcrowd.js"
   },
   "dependencies": {
     "ejs": "^6.0.1",
