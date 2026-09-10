@@ -14,7 +14,7 @@ app.set('view engine', 'ejs')
 app.set('views', path.resolve(__dirname, 'ejs'))
 
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Home', active: 'home' })
+  res.render('holdcrowd', { title: 'Home', active: 'home' })
 })
 app.get('/game', (req, res) => {
   res.render('game', { title: 'Game', active: 'game' })
