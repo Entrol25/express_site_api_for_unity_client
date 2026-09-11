@@ -14,6 +14,7 @@ app.set('view engine', 'ejs')
 app.set('views', path.resolve(__dirname, 'ejs'))
 
 app.get('/', (req, res) => {
+  //res.send('<h1>Hello Express!</h1>')
   res.render('index', { title: 'Home', active: 'home' })
 })
 app.get('/game', (req, res) => {
