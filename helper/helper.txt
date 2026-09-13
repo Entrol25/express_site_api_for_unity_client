@@ -40,4 +40,7 @@ npm install -D nodemon // для разработки
 //node index // запуск
 npm run dev // запуск c nodemon
 //npm run start // запуск 
-//npm run startholdcrowd // запуск 
+
+<div class="container">
+    <a href="https://eloksal.ru/privacy-policy/">https://eloksal.ru/privacy-policy</a>
+  </div>
