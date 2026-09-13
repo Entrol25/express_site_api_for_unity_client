@@ -2,18 +2,21 @@
   "name": "express_site",
   "version": "1.0.0",
   "description": "express_site_api_for_unity_client",
+  "type": "module",
+  "main": "index.js",
   "keywords": [
     "express"
   ],
   "license": "ISC",
   "author": "HoldCrowd",
-  "type": "module",
-  "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "cross-env NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development nodemon index.js"
   },
   "dependencies": {
+    "config": "^5.0.1",
+    "cross-env": "^10.1.0",
+    "ejs": "^6.0.1",
     "express": "^5.2.1"
   },
   "devDependencies": {
