@@ -9,20 +9,31 @@ const __dirname = path.resolve()
 
 app.set("view engine", "ejs")
 app.set("views", path.resolve(__dirname, "ejs"))
+app.use(express.static(path.resolve(__dirname, 'ejs')))
 
 const PORT = config.get("port")// || 5000 // config.get
 
 let countConnect = 0;
+let countRoomServers = 2;
+let versionGame = "0.0.1";
 
 app.get('/', (req, res) => {
-  res.render("index", { title: "Home", active: "home" })
+  res.render("index", { title: "Home", content: '1', active: "home" })
 })
 app.get('/game', (req, res) => {
-  res.render("game", { title: "Game", active: "game" })
+  res.render("game", { title: "Game", content: '2', active: "game" })
+})
+app.get('/download/hello', (req, res) => {
+  // res.download(path.resolve(__dirname, 'soft', 'apk.html'))
+  res.download(path.resolve(__dirname, 'soft', 'Hello World.txt'))
 })
 app.get('/cookie-privacy-policy', (req, res) => {
   res.render("cookie-privacy-policy",
-    { title: "Cookie privacy policy", active: "cookie-privacy-policy" })
+    { title: "Cookie Privacy Policy", content: '3', active: "cookie-privacy-policy" })
+})
+app.get('/game-privacy-policy', (req, res) => {
+  res.render("game-privacy-policy",
+    { title: "Game Privacy Policy", content: '4', active: "game-privacy-policy" })
 })
 //==========================================
 // app.get('/', (req, res) => {
@@ -46,62 +57,54 @@ app.get('/api', (req, res) => {
 
     if (req.query.pass == config.get("UnityServerPass")
       && req.query.id == -1) {
-      res.send(JSON.stringify([
-        {
-          countConnect: countConnect,
-          ipServer: "127.0.0.1"// ipconfig 
-        }// Ethernet adapter Ethernet: // 2-й средний
-      ]))
-
       countConnect++
     }
     else if (req.query.pass == config.get("AdminPass")) {
-
       countConnect = req.query.id;
-
-      res.send(JSON.stringify([
-        {
-          countConnect: countConnect,
-          ipServer: "127.0.0.1"// ipconfig 
-        }// Ethernet adapter Ethernet: // 2-й средний
-      ]))
     }
     else {
       //console.log("/api = Error config.get")
     }
-
+    res.send(JSON.stringify([
+      {
+        countConnect: countConnect,
+        ipServer: "127.0.0.1"// ipconfig 
+      }// Ethernet adapter Ethernet: // 2-й средний
+    ]))
   }
-  catch {
-
-  }
+  catch { }
 })
 //==========================================
 app.get('/apiversiongame', (req, res) => {
-  res.send(JSON.stringify([
-    {
-      versionGame: "0.0.1",// для клиентов - игроков
+  try {
+    if (req.query.pass != "" &&
+      req.query.pass == config.get("AdminPass")) {
+      versionGame = req.query.versionGame;
     }
-  ]))
+    res.send(JSON.stringify([
+      {
+        versionGame: versionGame,// для клиентов - игроков
+      }
+    ]))
+  }
+  catch { }
 })
 app.get('/apiserversip', (req, res) => {
-  res.send(JSON.stringify([
-    {
-      //ipServer: "192.168.56.1",
-      // ipServer: "127.0.0.3",
-      ipServer: "168.222.142.14",// для клиентов - игроков
-      countRoomServers: 10
+  try {
+    if (req.query.pass != "" &&
+      req.query.pass == config.get("AdminPass")) {
+      countRoomServers = req.query.countRoomServers;
     }
-    // ,
-    // {
-    //   //ipServer: "192.168.100.2",
-    //   ipServer: "127.0.0.2",
-    //   countRoomServers: 3
-    // },
-    // {
-    //   ipServer: "127.0.0.1",
-    //   countRoomServers: 3
-    // }
-  ]))
+    res.send(JSON.stringify([
+      {
+        //ipServer: "192.168.56.1",
+        // ipServer: "127.0.0.3",
+        ipServer: "168.222.142.14",// для клиентов - игроков
+        countRoomServers: countRoomServers // 2
+      }
+    ]))
+  }
+  catch { }
 })
 //==========================================
 app.listen(PORT, () => console.log(
