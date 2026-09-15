@@ -57,7 +57,16 @@ app.get('/api', (req, res) => {
 
     if (req.query.pass == config.get("UnityServerPass")
       && req.query.id == -1) {
+      res.send(JSON.stringify([
+        {
+          countConnect: countConnect,
+          ipServer: "127.0.0.1"// ipconfig 
+        }// Ethernet adapter Ethernet: // 2-й средний
+      ]))
+
       countConnect++
+
+      return;
     }
     else if (req.query.pass == config.get("AdminPass")) {
       countConnect = req.query.id;
@@ -98,8 +107,8 @@ app.get('/apiserversip', (req, res) => {
     res.send(JSON.stringify([
       {
         //ipServer: "192.168.56.1",
-        // ipServer: "127.0.0.3",
-        ipServer: "168.222.142.14",// для клиентов - игроков
+        ipServer: "127.0.0.1", // для теста 
+        //ipServer: "168.222.142.14",// для клиентов - игроков
         countRoomServers: countRoomServers // 2
       }
     ]))
